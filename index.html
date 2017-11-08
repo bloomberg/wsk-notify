@@ -1,0 +1,533 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7">
+<![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+<!--<![endif]-->
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <meta property="og:site_name" content="bloomberg.gitub.io/"/>
+  <meta property="og:type" content="article"/>
+
+  <meta name="twitter:card" content="summary_large_image"/>
+
+  <!-- meta tags for this project -->
+  <!-- SEO headline rewritten to accomodate keywords -->
+  <title>wsk-notify</title>
+
+  <!-- What is the main headline? -->
+  <meta property="og:title" content="wsk notify">
+  <!-- What is the share-able image -->
+  <!-- Image aspect ratio: 1.91:1 Image Dimensions: 1200x630px -->
+  <meta property="og:image" content="http://bloomberg.gitub.io//wsk-notify/img/wsk-notify.gif"/>
+  <!-- What shows up in Facebook -->
+  <meta property="og:description" content="Simple, customizable console notifications"/>
+  <!-- What shows up in search engines -->
+  <meta name="description" content="Simple, customizable console notifications">
+  <!-- Some keywords if you want -->
+  <meta name="keywords" content="wsk, wsk-notify, bloomberg graphics, build system, wsk build system, javascript console notifications"/>
+  <!-- The full link to this graphic -->
+  <!-- If you're using https, change these urls -->
+  <meta property="og:url" content="http://bloomberg.gitub.io//wsk-notify/"/>
+
+  <!-- Twitter -->
+  <meta name="twitter:site" content="@bbgvisualdata"/>
+  <!-- What is the tweet / share statement? -->
+  <meta name="twitter:title" content="wsk-notify — Simple, customizable console notifications">
+  <!-- What is the tweet / share statement? -->
+  <meta name="twitter:image" content="http://bloomberg.gitub.io//wsk-notify/img/wsk-notify.gif">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="img/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+  <!-- Styles for this project -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+
+  </head>
+  <body>
+      
+
+  <main>
+
+    <div class="content">
+      <div class="splash">
+        <h1 id="wsk-notify"><a class="anchor-link" href="#wsk-notify"></a> wsk-notify</h1><a href="https://travis-ci.org/bloomberg/wsk-notify"><img src="https://img.shields.io/travis/bloomberg/wsk-notify.svg?style=flat-square" alt="Build status"></a>
+<a href="https://coveralls.io/github/bloomberg/wsk-notify?branch=master"><img src="https://img.shields.io/coveralls/github/bloomberg/wsk-notify/master.svg?style=flat-square" alt="Coverage"></a>
+<a href="https://www.npmjs.com/package/wsk-notify"><img src="https://img.shields.io/npm/v/wsk-notify.svg?style=flat-square" alt="npm version"></a>
+<a href="https://github.com/Flet/semistandard"><img src="https://img.shields.io/badge/code%20style-semistandard-00b9e7.svg?style=flat-square" alt="js-semistandard-style"></a>
+<blockquote>
+<p>Simple, customizable console notifications. Used in the <a href="https://bloomberg.github.io/wsk">wsk</a> build system.</p>
+</blockquote>
+      </div>
+      <div class="guide">
+        <div class="scroll-section"><h2 id="installation"><a class="anchor-link" href="#installation">#</a> Installation</h2><pre><code>npm install --save wsk-notify
+</code></pre>
+</div><div class="scroll-section"><h2 id="usage"><a class="anchor-link" href="#usage">#</a> Usage</h2><p>Use the <code>notify</code> function to create formatted console messages. Simple usage:</p>
+<pre><code><span class="hljs-keyword">var</span> notify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'wsk-notify'</span>);
+
+notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'A description of what I did...'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'The file acted upon or the result of what happened'</span>
+});
+</code></pre>
+<p>Gives you:</p>
+<p><img src="img/simple-usage.png" alt="Simple usage"></p>
+<p>The notification has three parts:</p>
+<ol>
+<li>Prefix (the timestamp and base directory name)</li>
+<li>Message (<code>message</code>)</li>
+<li>Value (<code>value</code>)</li>
+</ol>
+<p>Both <code>message</code> and <code>value</code> are optional, in case you only need one of them. They are functionally equivalent. The only difference is <code>value</code> gets bolded by default.</p>
+<p>You can also pass a list, shown here using the <a href="#shorthand">shorthand notation</a>.</p>
+<pre><code>notify([
+  {<span class="hljs-attr">m</span>: <span class="hljs-string">'First message'</span>,  <span class="hljs-attr">v</span>: <span class="hljs-string">'File one'</span>},
+  {<span class="hljs-attr">m</span>: <span class="hljs-string">'Second message'</span>, <span class="hljs-attr">v</span>: <span class="hljs-string">'File two'</span>}
+]);
+</code></pre>
+<p>If you&#39;ve given notify a list of objects, or you&#39;re using <a href="#groups">groups</a>, it will return a list of notification strings. If you&#39;ve given it a single object, it will return a single string.</p>
+</div><div class="scroll-section"><h2 id="examples"><a class="anchor-link" href="#examples">#</a> Examples</h2><p>For a full setup, take a look at a <a href="https://bloomberg.github.io/wsk.example">wsk example project</a>, which uses this library to tell users when their build tasks have been completed. The different display styles allow you to establish a visual pattern of what steps have occurred in your build process:</p>
+<ol>
+<li>A file change was detected (cyan)</li>
+<li>That file was transformed, such as a Stylus file becoming a CSS file (magenta)</li>
+<li>Our live reload server detected the new file and is now refreshing (bold yellow)</li>
+</ol>
+<p><img src="img/example-project.png" alt="wsk example"></p>
+<p>Here are a bunch of <code>compile</code> processes running:</p>
+<p><img src="img/build.png" alt="wsk build example"></p>
+<p>And here is a watch process:</p>
+<p><img src="img/dev.png" alt="wsk watch example"></p>
+<p>Learn more about the wsk build system <a href="https://bloomberg.github.io/wsk">here</a>.</p>
+<p>This library isn&#39;t just for build processes, though. You could use it whenever you want to give timestamped notification and easily want to group notifications by color. For example, if you&#39;re scraping a number of web pages, you could give a notification when a site was visited and another style notification when a data file is written.</p>
+</div><div class="scroll-section"><h2 id="displays--styling"><a class="anchor-link" href="#displays--styling">#</a> Displays &amp; Styling</h2><p>If you don&#39;t specify a <code>display</code> style, you&#39;ll get the above: the timestamp is <code>gray</code>, the project root is <code>blue</code> and <code>bold</code>, the message is your default color and the value is bold.</p>
+<p>Out of the box, you get a number of styles, called &quot;displays&quot;. Use one like so:</p>
+<pre><code>notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'My message...'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+  <span class="hljs-attr">display</span>: <span class="hljs-string">'compile'</span> <span class="hljs-comment">// Can be any of the following: 'compile', 'watch', 'error', 'change', 'add', 'reload', 'success', 'remove', 'serve'</span>
+});
+</code></pre>
+<p>You can also pass an <code>Error</code> object to the <code>error</code> key to get a stack trace. See the display gallery below for an example. Errors are run through <a href="https://npmjs.com/package/clean-stack">clean-stack</a> to cut out some of the junk.</p>
+<pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cb</span> (<span class="hljs-params">err, response</span>) </span>{
+  <span class="hljs-keyword">if</span> (err) {
+    notify({
+      <span class="hljs-attr">message</span>: <span class="hljs-string">'My message...'</span>,
+      <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+      <span class="hljs-attr">display</span>: <span class="hljs-string">'error'</span>, <span class="hljs-comment">// This can be any display but 'error' will have it print in red.</span>
+      error: err
+    });
+  }
+};
+</code></pre>
+<p>See the specifics of these styles under <code>defaultDisplays</code> in <a href="src/defaults/defaultNotifyrc.js"><code>src/defaults/defaultNotifyrc.js</code></a>.</p>
+</div><div class="scroll-section"><h3 id="default-displays"><a class="anchor-link" href="#default-displays">##</a> Default Displays</h3><p><strong><code>default</code></strong></p>
+<p><img src="img/default.png" alt="default display"></p>
+<p><strong><code>compile</code></strong></p>
+<p><img src="img/compile.png" alt="compile display"></p>
+<p><strong><code>watch</code></strong></p>
+<p><img src="img/watch.png" alt="watch display"></p>
+<p><strong><code>error</code></strong></p>
+<p><img src="img/error.png" alt="error display"></p>
+<p><strong><code>error</code> with an <code>Error</code> object to show stack</strong></p>
+<p><img src="img/error-object.png" alt="error-object display"></p>
+<p><strong><code>change</code></strong></p>
+<p><img src="img/change.png" alt="change display"></p>
+<p><strong><code>remove</code></strong></p>
+<p><img src="img/remove.png" alt="remove display"></p>
+<p><strong><code>add</code></strong></p>
+<p><img src="img/add.png" alt="add display"></p>
+<p><strong><code>reload</code></strong></p>
+<p><img src="img/reload.png" alt="reload display"></p>
+<p><strong><code>success</code></strong></p>
+<p><img src="img/success.png" alt="success display"></p>
+<p><strong><code>serve</code></strong></p>
+<p><img src="img/serve.png" alt="serve display"></p>
+</div><div class="scroll-section"><h3 id="display-options"><a class="anchor-link" href="#display-options">##</a> Display options</h3><p>The <code>display</code> field can be:</p>
+<ol>
+<li>A name of a display, as shown above</li>
+<li>A string or an array of chalk codes. This is shorthand for styling the <code>message</code>.</li>
+<li>A full display object</li>
+</ol>
+<p>For example:</p>
+<pre><code><span class="hljs-comment">// Single color</span>
+notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'Message...'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+  <span class="hljs-attr">display</span>: <span class="hljs-string">'cyan'</span>
+});
+
+<span class="hljs-comment">// Multiple color</span>
+notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'Message...'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+  <span class="hljs-attr">display</span>: [<span class="hljs-string">'magenta'</span>, <span class="hljs-string">'underline'</span>]
+});
+
+<span class="hljs-comment">// Custom display object</span>
+notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'Message...'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+  <span class="hljs-attr">display</span>: {
+    <span class="hljs-attr">messageStyle</span>: <span class="hljs-string">'cyan'</span>,
+    <span class="hljs-attr">valueStyle</span>: <span class="hljs-string">'stripColor'</span> <span class="hljs-comment">// This removes existing styling. In this case it makes it not bolded.</span>
+  }
+});
+</code></pre>
+<p>Gives you:</p>
+<p><img src="img/display-string.png" alt="Display string">
+<img src="img/display-array.png" alt="Display array">
+<img src="img/display-object.png" alt="Display object"></p>
+<p>Here are the full options for the <code>display</code> object showing default values. Any attribute ending in <code>Style</code> can take a string or an array of strings of <a href="https://www.npmjs.com/package/chalk#styles">chalk color, modifier or background color style</a>.</p>
+<pre><code>notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'My message...'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+  <span class="hljs-attr">display</span>: {
+    <span class="hljs-attr">messageStyle</span>: <span class="hljs-string">''</span>, <span class="hljs-comment">// Unstyled</span>
+    valueStyle: <span class="hljs-string">'bold'</span>,
+    <span class="hljs-attr">preString</span>: <span class="hljs-string">''</span>, <span class="hljs-comment">// Put a string before this message</span>
+    postString: <span class="hljs-string">''</span>, <span class="hljs-comment">// Put a string after this message</span>
+    prefixStyle: { <span class="hljs-comment">// Change the style of the prefix</span>
+      open: <span class="hljs-string">'['</span>,
+      <span class="hljs-attr">open</span>: <span class="hljs-string">']'</span>,
+      <span class="hljs-attr">sep</span>: <span class="hljs-string">'|'</span>,
+      <span class="hljs-attr">timestampStyle</span>: <span class="hljs-string">'gray'</span>,
+      <span class="hljs-attr">projectNameStyle</span>: [<span class="hljs-string">'bold'</span>, <span class="hljs-string">'blue'</span>]
+    },
+    <span class="hljs-attr">desktop</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// Send an OS desktop notification. This delegates to node-notifier. If this field is true, it will send a notification with the project name as the "title", the `message` as "sub-title" and the `value` as "message". You can overwrite this behavior and add more options such as sounds by setting this to an object that will be passed directly to node-notifier. See their docs for full options: https://www.npmjs.com/package/node-notifier.</span>
+    skipPrefix: <span class="hljs-literal">false</span>, <span class="hljs-comment">// If true, on't log the prefix</span>
+    projectName: <span class="hljs-literal">null</span> <span class="hljs-comment">// Defaults to your root project directory if not set here. Can also be a function that gets passed the root project directory and returns a string.</span>
+  },
+  <span class="hljs-attr">silent</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// If true, don't log out the notification, but still return it as a string.</span>
+};
+</code></pre>
+</div><div class="scroll-section"><h3 id="creating-your-own-display-styles-with-a-notifyrc-file"><a class="anchor-link" href="#creating-your-own-display-styles-with-a-notifyrc-file">##</a> Creating Your Own Display Styles With A <code>.notifyrc</code> File</h3><p>If you create a <code>.notifyrc</code> and place it in your project root dirctory, you can add custom display types of your own. Any unspecified keys on a display will fall back to the defaults above.</p>
+<pre><code><span class="hljs-comment">// .notifyrc</span>
+
+<span class="hljs-comment">// Define these two styles</span>
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">customDisplays</span>: {
+    <span class="hljs-attr">valueUnderline</span>: {
+      <span class="hljs-attr">messageStyle</span>: <span class="hljs-string">'cyan'</span>,
+      <span class="hljs-attr">valueStyle</span>: [<span class="hljs-string">'underline'</span>, <span class="hljs-string">'magenta'</span>],
+      <span class="hljs-attr">desktop</span>: {
+        <span class="hljs-attr">sound</span>: <span class="hljs-string">'Frog'</span>
+      }
+    },
+    <span class="hljs-attr">noPrefix</span>: {
+      <span class="hljs-attr">skipPrefix</span>: <span class="hljs-literal">true</span>
+    }
+  }
+};
+</code></pre>
+<pre><code><span class="hljs-keyword">var</span> notify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'wsk-notify'</span>);
+
+notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'Message...'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'I\'m magenta and underlined!'</span>,
+  <span class="hljs-attr">display</span>: <span class="hljs-string">'valueUnderline'</span>
+});
+
+notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'Message...'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'and value only.'</span>,
+  <span class="hljs-attr">display</span>: <span class="hljs-string">'noPrefix'</span>
+});
+</code></pre>
+<p>Gives you:</p>
+<p><img src="img/value-underline.png" alt="Value underline"></p>
+<p><img src="img/noPrefix.png" alt="No prefix"></p>
+</div><div class="scroll-section"><h3 id="extending-existing-display-styles"><a class="anchor-link" href="#extending-existing-display-styles">##</a> Extending Existing Display Styles</h3><p>Let&#39;s say you really like our <code>valueUnderline</code> style above but want to tweak it slightly. You can modify a display with the <code>extend</code> key.</p>
+<pre><code>notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'Make me bold yellow'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'Keep me underlined magenta'</span>,
+  <span class="hljs-attr">display</span>: <span class="hljs-string">'valueUnderline'</span>,
+  <span class="hljs-attr">extend</span>: {
+    <span class="hljs-attr">messageStyle</span>: <span class="hljs-string">'cyan'</span>
+  }
+});
+</code></pre>
+<p>Gives you:</p>
+<p><img src="img/extend.png" alt="extend"></p>
+</div><div class="scroll-section"><h2 id="a-note-on-style-inheritance"><a class="anchor-link" href="#a-note-on-style-inheritance">#</a> A Note on Style Inheritance</h2><p>Display styles override global styles defined in <code>.notifyrc</code> and notification-specific styles override display styles. You can see this play out in the <a href="#styling-the-prefix">Styling the prefix</a> section below. The same pattern applies to <code>desktop</code> settings which, like the prefix, can be styled in a the <code>.notifyrc</code>, a display or directly in a notification.</p>
+</div><div class="scroll-section"><h2 id="groups"><a class="anchor-link" href="#groups">#</a> Groups</h2><p>Sometimes you want to log out a group of notifications together, even if the notifications don&#39;t happen at the same time. You can do this with wsk-notify using the <code>.group()</code> option.</p>
+<pre><code><span class="hljs-keyword">var</span> group = notify.group();
+<span class="hljs-comment">// happens at 08:00</span>
+group.add({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'Message 1'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+  <span class="hljs-attr">display</span>: <span class="hljs-string">'add'</span>
+});
+
+<span class="hljs-comment">// happens at 08:02</span>
+group.add({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'Message 2'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+  <span class="hljs-attr">display</span>: <span class="hljs-string">'compile'</span>
+});
+
+<span class="hljs-comment">// Logs out notifications accurately timestamped to when they occured</span>
+<span class="hljs-comment">// returns the list of notification strings</span>
+<span class="hljs-keyword">var</span> list = group.notify();
+</code></pre>
+<p>For convenience, you can also add your first notification with your first call to <code>.group()</code></p>
+<pre><code><span class="hljs-keyword">var</span> group = notify.group({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'Message 1'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+  <span class="hljs-attr">display</span>: <span class="hljs-string">'add'</span>
+});
+
+<span class="hljs-comment">// continue same as above...</span>
+</code></pre>
+</div><div class="scroll-section"><h2 id="styling-the-prefix"><a class="anchor-link" href="#styling-the-prefix">#</a> Styling The Prefix</h2><p>In addition to styling the prefix in a display, you can set it globally for all displays through the <code>.notifyrc</code> file.</p>
+<p><strong>Note</strong>:</p>
+<p>These are all equivalent:</p>
+<pre><code><span class="hljs-comment">// Set it globally</span>
+
+<span class="hljs-comment">// .notifyrc</span>
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">globalPrefixStyle</span>: {
+    <span class="hljs-attr">open</span>: <span class="hljs-string">'&lt;'</span>,
+    <span class="hljs-attr">close</span>: <span class="hljs-string">'&gt;'</span>,
+    <span class="hljs-attr">sep</span>: <span class="hljs-string">'🍰 '</span>, <span class="hljs-comment">// Note, emojis look better with a trailing space</span>
+    projectNameStyle: <span class="hljs-string">'yellow'</span>
+  }
+};
+
+<span class="hljs-comment">// and then in your code...</span>
+notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'Message...'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>
+});
+</code></pre>
+<pre><code><span class="hljs-comment">// With a custom display</span>
+
+<span class="hljs-comment">// .notifyrc</span>
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">customDisplays</span>: {
+    <span class="hljs-attr">cake</span>: {
+      <span class="hljs-attr">prefixStyle</span>: {
+        <span class="hljs-attr">open</span>: <span class="hljs-string">'&lt;'</span>,
+        <span class="hljs-attr">close</span>: <span class="hljs-string">'&gt;'</span>,
+        <span class="hljs-attr">sep</span>: <span class="hljs-string">'🍰 '</span>,
+        <span class="hljs-attr">projectNameStyle</span>: <span class="hljs-string">'yellow'</span>
+      }
+  }
+};
+
+<span class="hljs-comment">// and then in your code...</span>
+notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'Message...'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+  <span class="hljs-attr">display</span>: <span class="hljs-string">'cake'</span>
+};
+</code></pre>
+<p>Or for a single notification:</p>
+<pre><code>
+<span class="hljs-comment">// For a single notification</span>
+notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'My message'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+  <span class="hljs-attr">display</span>: {
+    <span class="hljs-attr">prefixStyle</span>: {
+      <span class="hljs-attr">open</span>: <span class="hljs-string">'&lt;'</span>,
+      <span class="hljs-attr">close</span>: <span class="hljs-string">'&gt;'</span>,
+      <span class="hljs-attr">sep</span>: <span class="hljs-string">'🍰 '</span>,
+      <span class="hljs-attr">projectNameStyle</span>: <span class="hljs-string">'yellow'</span>
+    }
+  }
+});
+
+<span class="hljs-comment">// Modifying the existing display style for a single notification</span>
+notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'My message'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+  <span class="hljs-attr">display</span>: <span class="hljs-string">'default'</span>,
+  <span class="hljs-attr">extend</span>: {
+    <span class="hljs-attr">prefixStyle</span>: {
+      <span class="hljs-attr">open</span>: <span class="hljs-string">'&lt;'</span>,
+      <span class="hljs-attr">close</span>: <span class="hljs-string">'&gt;'</span>,
+      <span class="hljs-attr">sep</span>: <span class="hljs-string">'🍰 '</span>,
+      <span class="hljs-attr">projectNameStyle</span>: <span class="hljs-string">'yellow'</span>
+    }
+  }
+});
+</code></pre>
+<p>These all give you:</p>
+<p><img src="img/custom-prefix.png" alt="Custom prefix"></p>
+</div><div class="scroll-section"><h2 id="other-notifyrc-options"><a class="anchor-link" href="#other-notifyrc-options">#</a> Other <code>.notifyrc</code> Options</h2><p>You can also set the timestamp and project name strings globally.</p>
+<pre><code><span class="hljs-comment">// .notifyrc</span>
+
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-comment">// Set a custom string</span>
+  time: <span class="hljs-string">'∞'</span>
+
+  <span class="hljs-comment">// Or a function that returns a string</span>
+  time: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">currentDateObject</span>) </span>{
+    <span class="hljs-keyword">return</span> currentDateObject.getFullYear()
+  }
+};
+</code></pre>
+<pre><code><span class="hljs-comment">// .notifyrc</span>
+
+<span class="hljs-built_in">module</span>.exports {
+  <span class="hljs-comment">// Set a custom string</span>
+  projectName: <span class="hljs-string">'my-other-project-name'</span>
+
+  <span class="hljs-comment">// Or add to the existing project directory name.</span>
+  <span class="hljs-comment">// This can be useful for debugging so you know what part of the process is sending notifications without having to put that in the `message`.</span>
+  <span class="hljs-comment">// It can make your notifications look less spiffy, though, because your prefixes won't align since the strings are different lengths</span>
+  projectName: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">rootDirectory</span>) </span>{
+    <span class="hljs-keyword">return</span> rootDirectory + <span class="hljs-string">'/tests'</span>
+  }
+};
+</code></pre>
+<p>And set desktop notifications for displays or notifications that have <code>desktop: true</code> or as an object.</p>
+<pre><code><span class="hljs-comment">// .notifyrc</span>
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">desktop</span>: {
+    <span class="hljs-attr">sound</span>: <span class="hljs-string">'Glass'</span>
+  }
+};
+
+<span class="hljs-comment">// in your code</span>
+notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'My message'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+  <span class="hljs-attr">desktop</span>: <span class="hljs-literal">true</span>
+});
+
+<span class="hljs-comment">// if you have something defined in your notification or display settings,</span>
+notify({
+  <span class="hljs-attr">message</span>: <span class="hljs-string">'My message'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
+  <span class="hljs-attr">desktop</span>: {
+    <span class="hljs-attr">sound</span>: <span class="hljs-string">'Frog'</span>
+  }
+});
+</code></pre>
+</div><div class="scroll-section"><h2 id="specifying-an-alternate-notifyrc"><a class="anchor-link" href="#specifying-an-alternate-notifyrc">#</a> Specifying An Alternate <code>.notifyrc</code></h2><p>If you want to use another file name or load an object directly you can use <code>notify.config()</code>.</p>
+<pre><code>notify.config(<span class="hljs-string">'path/from/project/root/to/.my-notifyrc'</span>);
+
+<span class="hljs-comment">// or</span>
+notify.config({
+  <span class="hljs-attr">time</span>: <span class="hljs-string">'∞'</span>
+});
+</code></pre>
+<p>If you also already have a <code>.notifyrc</code>, these options will extend your existing options. To set options back to their defaults, set your options to <code>null</code>.</p>
+</div><div class="scroll-section"><h2 id="shorthand"><a class="anchor-link" href="#shorthand">#</a> Shorthand</h2><p>If you get tired of writing out <code>message</code>, <code>value</code> and other top-level settings, you can use the following shorthand:</p>
+<ul>
+<li><code>m</code> --&gt; <code>message</code></li>
+<li><code>v</code> --&gt; <code>value</code></li>
+<li><code>d</code> --&gt; <code>display</code></li>
+<li><code>s</code> --&gt; <code>silent</code></li>
+<li><code>e</code> --&gt; <code>error</code></li>
+<li><code>x</code> --&gt; <code>extend</code></li>
+<li><code>k</code> --&gt; <code>desktop</code></li>
+</ul>
+</div><div class="scroll-section"><h2 id="piping-on-the-command-line"><a class="anchor-link" href="#piping-on-the-command-line">#</a> Piping On The Command Line</h2><p>wsk-notify supports receiving stringified JSON from other processes. Let&#39;s say you have a library that pipes single-line json strings to stdout. You can report those notifications like so:</p>
+<pre><code>$ my-process | wks-notify
+
+<span class="hljs-comment"># or more explicitly (using shorthand syntax)</span>
+$ <span class="hljs-built_in">echo</span> <span class="hljs-string">'{"m": "my message", "v": "my value"}'</span> | wsk-notify
+</code></pre>
+</div><div class="scroll-section"><h2 id="clock"><a class="anchor-link" href="#clock">#</a> Clock</h2><p>wsk-notify comes with a simple clock utility to help you time how long processes took and format them nicely. Example:</p>
+<pre><code><span class="hljs-keyword">var</span> start = notify.clock();
+
+<span class="hljs-comment">// 50 milliseconds elapse</span>
+<span class="hljs-keyword">var</span> duration = notify.clock(start); <span class="hljs-comment">// "50ms"</span>
+
+<span class="hljs-comment">// or get the raw duration in milliseconds</span>
+<span class="hljs-keyword">var</span> duration = notify.clock(start, {<span class="hljs-attr">raw</span>: <span class="hljs-literal">true</span>}); <span class="hljs-comment">// 50</span>
+
+<span class="hljs-comment">// Because calling `.clock` with no arguments just returns a start time, you can run multiple clocks with no change in syntax</span>
+
+<span class="hljs-keyword">var</span> timerOne = notify.clock();
+<span class="hljs-comment">// 400 ms go by</span>
+<span class="hljs-keyword">var</span> timerTwo = notify.clock();
+<span class="hljs-comment">// 900 ms go by</span>
+
+<span class="hljs-keyword">var</span> duration = notify.clock(timerOne); <span class="hljs-comment">// "1.3s"</span>
+<span class="hljs-keyword">var</span> duration = notify.clock(timerTwo); <span class="hljs-comment">// "900ms"</span>
+</code></pre>
+</div><div class="scroll-section"><h2 id="license"><a class="anchor-link" href="#license">#</a> License</h2><p>Apache 2.0</p>
+</div>
+      </div>
+    </div>
+
+    <div id="sidebar-button" class="mnav" data-open="false">
+      <div class="nav-logo wsk-notify-logo"></div>
+      <button class="sidebar-btn"></button>
+    </div>
+
+    <div id="sidebar-button-target" class="sidebar" data-open="false">
+      <div class="home-key">
+        <a href="#">
+          <div class="main-logo wsk-notify-logo"></div>
+          <div class="wsk-logo-text">wsk-notify</div>
+        </a>
+      </div>
+
+      
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#displays--styling">Displays &amp; Styling</a><ul>
+<li><a href="#default-displays">Default Displays</a></li>
+<li><a href="#display-options">Display Options</a></li>
+<li><a href="#creating-your-own-display-styles-with-a-notifyrc-file">Creating Your Own Display Styles With A .notifyrc File</a></li>
+<li><a href="#extending-existing-display-styles">Extending Existing Display Styles</a></li>
+</ul>
+</li>
+<li><a href="#a-note-on-style-inheritance">A Note On Style Inheritance</a></li>
+<li><a href="#groups">Groups</a></li>
+<li><a href="#styling-the-prefix">Styling The Prefix</a></li>
+<li><a href="#other-notifyrc-options">Other .notifyrc Options</a></li>
+<li><a href="#specifying-an-alternate-notifyrc">Specifying An Alternate .notifyrc</a></li>
+<li><a href="#shorthand">Shorthand</a></li>
+<li><a href="#piping-on-the-command-line">Piping On The Command Line</a></li>
+<li><a href="#clock">Clock</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+
+
+      <div class="alt-home-key">
+        <a href="https://bloomberg.github.io/wsk">
+          <div class="sub-logo wsk-logo"></div>
+          <div class="sub-logo-text">wsk</div>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/main.pkgd.js"></script>
+
+  </body>
+</html>
