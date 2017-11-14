@@ -1,6 +1,6 @@
 {
   "name": "wsk-notify",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Simple, customizable console notifications.",
   "bin": {
     "wsk-notify": "bin/wsk-notify"
@@ -43,10 +43,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bizweekgraphics/wsk-notify.git"
+    "url": "git+https://github.com/bloomberg/wsk-notify.git"
   },
   "bugs": {
-    "url": "https://github.com/bizweekgraphics/wsk-notify/issues"
+    "url": "https://github.com/bloomberg/wsk-notify/issues"
   },
-  "homepage": "https://github.com/bizweekgraphics/wsk-notify#readme"
+  "homepage": "https://github.com/bloomberg/wsk-notify#readme"
 }
