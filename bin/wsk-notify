@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+/* --------------------------------------------
+ *
+ * Read in nd-json objects and send them to wsk-notify
+ *
+ * --------------------------------------------
+ */
+
+var readline = require('readline');
+var notify = require('../src/index');
+
+var rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  terminal: false
+});
+
+rl.on('line', function (line) {
+  notify(JSON.parse(line));
+});

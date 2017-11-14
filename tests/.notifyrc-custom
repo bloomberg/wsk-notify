@@ -1,0 +1,5 @@
+module.exports = {
+  'time': function (d) {
+    return '10:00:00.00'
+  }
+}

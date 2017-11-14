@@ -1,0 +1,12 @@
+module.exports = {
+  'time': '00:00:00.00',
+  'customDisplays': {
+    'custom-name': {
+      'messageStyle': ['bold', 'magenta'],
+      'valueStyle': 'underline'
+    }
+  },
+  desktop: {
+    sound: 'Glass'
+  }
+}
