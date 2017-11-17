@@ -1,6 +1,6 @@
 {
   "name": "wsk-notify",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Simple, customizable console notifications.",
   "bin": {
     "wsk-notify": "bin/wsk-notify"
