@@ -1,1 +1,5 @@
 .notifyrc
+.eslintrc
+.editorconfig
+screenshots/
+tests/

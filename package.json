@@ -1,6 +1,6 @@
 {
   "name": "wsk-notify",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Simple, customizable console notifications.",
   "bin": {
     "wsk-notify": "bin/wsk-notify"
@@ -37,9 +37,6 @@
     "semistandard": "^11.0.0",
     "sinon": "^4.0.1",
     "strip-ansi": "^4.0.0"
-  },
-  "directories": {
-    "test": "tests"
   },
   "repository": {
     "type": "git",
