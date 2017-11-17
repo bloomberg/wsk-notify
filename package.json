@@ -38,9 +38,6 @@
     "sinon": "^4.0.1",
     "strip-ansi": "^4.0.0"
   },
-  "directories": {
-    "test": "tests"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bloomberg/wsk-notify.git"
