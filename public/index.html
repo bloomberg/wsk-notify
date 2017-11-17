@@ -152,9 +152,11 @@ notify({
 <p><img src="img/compile.png" alt="compile display"></p>
 <p><strong><code>watch</code></strong></p>
 <p><img src="img/watch.png" alt="watch display"></p>
-<p><strong><code>error</code></strong></p>
+<p><strong><code>warn</code></strong>, uses console.warn</p>
+<p><img src="img/warn.png" alt="warn display"></p>
+<p><strong><code>error</code></strong>, uses console.error</p>
 <p><img src="img/error.png" alt="error display"></p>
-<p><strong><code>error</code> with an <code>Error</code> object to show stack</strong></p>
+<p><strong><code>error</code> with an <code>Error</code> object to show stack</strong>, uses console.error</p>
 <p><img src="img/error-object.png" alt="error-object display"></p>
 <p><strong><code>change</code></strong></p>
 <p><img src="img/change.png" alt="change display"></p>
@@ -223,7 +225,8 @@ notify({
     skipPrefix: <span class="hljs-literal">false</span>, <span class="hljs-comment">// If true, on't log the prefix</span>
     projectName: <span class="hljs-literal">null</span> <span class="hljs-comment">// Defaults to your root project directory if not set here. Can also be a function that gets passed the root project directory and returns a string.</span>
   },
-  <span class="hljs-attr">silent</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// If true, don't log out the notification, but still return it as a string.</span>
+  <span class="hljs-attr">silent</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// If true, don't log out the notification, but still return it as a string.</span>
+  level: <span class="hljs-string">'log'</span> <span class="hljs-comment">// The `console` method to use. Can be "log", "warn", "error", "info" or "debug".</span>
 };
 </code></pre>
 </div><div class="scroll-section"><h3 id="creating-your-own-display-styles-with-a-notifyrc-file"><a class="anchor-link" href="#creating-your-own-display-styles-with-a-notifyrc-file">##</a> Creating Your Own Display Styles With A <code>.notifyrc</code> File</h3><p>If you create a <code>.notifyrc</code> and place it in your project root dirctory, you can add custom display types of your own. Any unspecified keys on a display will fall back to the defaults above.</p>
@@ -305,7 +308,7 @@ group.add({
 <span class="hljs-comment">// continue same as above...</span>
 </code></pre>
 </div><div class="scroll-section"><h2 id="styling-the-prefix"><a class="anchor-link" href="#styling-the-prefix">#</a> Styling The Prefix</h2><p>In addition to styling the prefix in a display, you can set it globally for all displays through the <code>.notifyrc</code> file.</p>
-<p><strong>Note</strong>:</p>
+<p><strong>Note</strong>: You do not have to set every property on <code>globalPrefixStyle</code> or <code>prefixStyle</code> are required. Any omitted keys will take on the default value. For example, you can just set <code>projectNameStyle</code> and everything else will be the same.</p>
 <p>These are all equivalent:</p>
 <pre><code><span class="hljs-comment">// Set it globally</span>
 
@@ -380,7 +383,37 @@ notify({
 </code></pre>
 <p>These all give you:</p>
 <p><img src="img/custom-prefix.png" alt="Custom prefix"></p>
-</div><div class="scroll-section"><h2 id="other-notifyrc-options"><a class="anchor-link" href="#other-notifyrc-options">#</a> Other <code>.notifyrc</code> Options</h2><p>You can also set the timestamp and project name strings globally.</p>
+</div><div class="scroll-section"><h2 id="other-notifyrc-options"><a class="anchor-link" href="#other-notifyrc-options">#</a> Other <code>.notifyrc</code> Options</h2><p>Anything in the default <code>.notifyrc</code> file will be extended by yours. Here&#39;s are the defaults.</p>
+<p><strong>Note</strong>: Instead of overwriting the <code>defaultDisplays</code>, it&#39;s a better practice to use <code>customDisplays</code> as described above in <a href="#creating-your-own-display-styles-with-a-notifyrc-file">Creating Your Own Display Styles With A <code>.notifyrc</code> File</a>.</p>
+<p><strong>Note</strong>: The same as <code>globalPrefixStyle</code>, any omitted keys on <code>defaultDisplaySettings</code> will take on the default value. For example, you can just set <code>messageStyle: &#39;&#39;</code> to get rid of the default <code>bold</code> and everything else will be the same.</p>
+<pre><code>{
+  <span class="hljs-attr">time</span>: formatTimestamp, <span class="hljs-comment">// Defaults to formatted current time. Can be a string or function with a JavaScript date object as `(currentTime)`. Falsey values</span>
+  projectName: projectName, <span class="hljs-comment">// Can be string or function with signature `(rootDir)`</span>
+  customDisplays: {},
+  <span class="hljs-attr">globalPrefixStyle</span>: {
+    <span class="hljs-attr">open</span>: <span class="hljs-string">'['</span>,
+    <span class="hljs-attr">close</span>: <span class="hljs-string">']'</span>,
+    <span class="hljs-attr">sep</span>: <span class="hljs-string">'|'</span>,
+    <span class="hljs-attr">timestampStyle</span>: <span class="hljs-string">'gray'</span>,
+    <span class="hljs-attr">projectNameStyle</span>: [<span class="hljs-string">'blue'</span>, <span class="hljs-string">'bold'</span>]
+  },
+  <span class="hljs-comment">// Base style for any display</span>
+  defaultDisplaySettings: {
+    <span class="hljs-attr">messageStyle</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attr">valueStyle</span>: <span class="hljs-string">'bold'</span>,
+    <span class="hljs-attr">preString</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attr">postString</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attr">skipPrefix</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">prefixStyle</span>: {},
+    <span class="hljs-attr">projectName</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">time</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">desktop</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">level</span>: <span class="hljs-string">'log'</span>
+  },
+  <span class="hljs-attr">defaultDisplays</span>: {...}
+};
+</code></pre>
+<p>Here are some examples:</p>
 <pre><code><span class="hljs-comment">// .notifyrc</span>
 
 <span class="hljs-built_in">module</span>.exports = {
@@ -401,13 +434,13 @@ notify({
 
   <span class="hljs-comment">// Or add to the existing project directory name.</span>
   <span class="hljs-comment">// This can be useful for debugging so you know what part of the process is sending notifications without having to put that in the `message`.</span>
-  <span class="hljs-comment">// It can make your notifications look less spiffy, though, because your prefixes won't align since the strings are different lengths</span>
-  projectName: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">rootDirectory</span>) </span>{
-    <span class="hljs-keyword">return</span> rootDirectory + <span class="hljs-string">'/tests'</span>
+  <span class="hljs-comment">// Or to signal a different branch</span>
+  projectName: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">rootDir</span>) </span>{
+    <span class="hljs-keyword">return</span> rootDir + <span class="hljs-string">'/tests'</span>
   }
 };
 </code></pre>
-<p>And set desktop notifications for displays or notifications that have <code>desktop: true</code> or as an object.</p>
+<p>And set desktop notifications for displays or notifications that have a truthy value for <code>desktop</code>.</p>
 <pre><code><span class="hljs-comment">// .notifyrc</span>
 <span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-attr">desktop</span>: {
@@ -422,7 +455,7 @@ notify({
   <span class="hljs-attr">desktop</span>: <span class="hljs-literal">true</span>
 });
 
-<span class="hljs-comment">// if you have something defined in your notification or display settings,</span>
+<span class="hljs-comment">// or this will override the `Frog` sound with `Glass`.</span>
 notify({
   <span class="hljs-attr">message</span>: <span class="hljs-string">'My message'</span>,
   <span class="hljs-attr">value</span>: <span class="hljs-string">'value'</span>,
@@ -475,6 +508,11 @@ $ <span class="hljs-built_in">echo</span> <span class="hljs-string">'{"m": "my m
 <span class="hljs-keyword">var</span> duration = notify.clock(timerOne); <span class="hljs-comment">// "1.3s"</span>
 <span class="hljs-keyword">var</span> duration = notify.clock(timerTwo); <span class="hljs-comment">// "900ms"</span>
 </code></pre>
+</div><div class="scroll-section"><h2 id="contributors"><a class="anchor-link" href="#contributors">#</a> Contributors</h2><ul>
+<li><a href="https://twitter.com/mhkeller">Michael Keller</a></li>
+<li><a href="https://twitter.com/_jsdiamond">Jeremy Diamond</a></li>
+<li><a href="https://twitter.com/aubergene">Julian Burgess</a></li>
+</ul>
 </div><div class="scroll-section"><h2 id="license"><a class="anchor-link" href="#license">#</a> License</h2><p>Apache 2.0</p>
 </div>
       </div>
@@ -513,6 +551,7 @@ $ <span class="hljs-built_in">echo</span> <span class="hljs-string">'{"m": "my m
 <li><a href="#shorthand">Shorthand</a></li>
 <li><a href="#piping-on-the-command-line">Piping On The Command Line</a></li>
 <li><a href="#clock">Clock</a></li>
+<li><a href="#contributors">Contributors</a></li>
 <li><a href="#license">License</a></li>
 </ul>
 

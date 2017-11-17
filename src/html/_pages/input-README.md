@@ -1,4 +1,4 @@
-wsk-notify [<img src="https://github.com/bloomberg/wsk/raw/docs/src/img/wsk-notify.gif" width="100" align="right" alt="wsk-notify">](https://bloomberg.github.io/wsk-notify)
+wsk-notify [<img src="https://github.com/bloomberg/wsk-notify/raw/docs/src/img/wsk-notify.gif" width="100" align="right" alt="wsk-notify">](https://bloomberg.github.io/wsk-notify)
 ===
 
 [![Build status](https://img.shields.io/travis/bloomberg/wsk-notify.svg?style=flat-square)](https://travis-ci.org/bloomberg/wsk-notify)
@@ -24,6 +24,7 @@ wsk-notify [<img src="https://github.com/bloomberg/wsk/raw/docs/src/img/wsk-noti
 * [Shorthand](#shorthand)
 * [Piping On The Command Line](#piping-on-the-command-line)
 * [Clock](#clock)
+* [Contributors](#contributors)
 * [License](#license)
 
 ## Installation
@@ -135,11 +136,15 @@ See the specifics of these styles under `defaultDisplays` in [`src/defaults/defa
 
 ![watch display](screenshots/watch.png)
 
-**`error`**
+**`warn`**, uses console.warn
+
+![warn display](screenshots/warn.png)
+
+**`error`**, uses console.error
 
 ![error display](screenshots/error.png)
 
-**`error` with an `Error` object to show stack**
+**`error` with an `Error` object to show stack**, uses console.error
 
 ![error-object display](screenshots/error-object.png)
 
@@ -158,6 +163,7 @@ See the specifics of these styles under `defaultDisplays` in [`src/defaults/defa
 **`reload`**
 
 ![reload display](screenshots/reload.png)
+
 
 **`success`**
 
@@ -231,7 +237,8 @@ notify({
     skipPrefix: false, // If true, on't log the prefix
     projectName: null // Defaults to your root project directory if not set here. Can also be a function that gets passed the root project directory and returns a string.
   },
-  silent: false // If true, don't log out the notification, but still return it as a string.
+  silent: false, // If true, don't log out the notification, but still return it as a string.
+  level: 'log' // The `console` method to use. Can be "log", "warn", "error", "info" or "debug".
 };
 ```
 
@@ -345,7 +352,7 @@ var group = notify.group({
 
 In addition to styling the prefix in a display, you can set it globally for all displays through the `.notifyrc` file.
 
-**Note**:
+**Note**: You do not have to set every property on `globalPrefixStyle` or `prefixStyle` are required. Any omitted keys will take on the default value. For example, you can just set `projectNameStyle` and everything else will be the same.
 
 These are all equivalent:
 
@@ -433,7 +440,42 @@ These all give you:
 
 ## Other `.notifyrc` Options
 
-You can also set the timestamp and project name strings globally.
+Anything in the default `.notifyrc` file will be extended by yours. Here's are the defaults.
+
+**Note**: Instead of overwriting the `defaultDisplays`, it's a better practice to use `customDisplays` as described above in [Creating Your Own Display Styles With A `.notifyrc` File](#creating-your-own-display-styles-with-a-notifyrc-file).
+
+**Note**: The same as `globalPrefixStyle`, any omitted keys on `defaultDisplaySettings` will take on the default value. For example, you can just set `messageStyle: ''` to get rid of the default `bold` and everything else will be the same.
+
+```js
+{
+  time: formatTimestamp, // Defaults to formatted current time. Can be a string or function with a JavaScript date object as `(currentTime)`. Falsey values
+  projectName: projectName, // Can be string or function with signature `(rootDir)`
+  customDisplays: {},
+  globalPrefixStyle: {
+    open: '[',
+    close: ']',
+    sep: '|',
+    timestampStyle: 'gray',
+    projectNameStyle: ['blue', 'bold']
+  },
+  // Base style for any display
+  defaultDisplaySettings: {
+    messageStyle: '',
+    valueStyle: 'bold',
+    preString: '',
+    postString: '',
+    skipPrefix: false,
+    prefixStyle: {},
+    projectName: null,
+    time: null,
+    desktop: false,
+    level: 'log'
+  },
+  defaultDisplays: {...}
+};
+```
+
+Here are some examples:
 
 ```js
 // .notifyrc
@@ -458,14 +500,14 @@ module.exports {
 
   // Or add to the existing project directory name.
   // This can be useful for debugging so you know what part of the process is sending notifications without having to put that in the `message`.
-  // It can make your notifications look less spiffy, though, because your prefixes won't align since the strings are different lengths
-  projectName: function (rootDirectory) {
-    return rootDirectory + '/tests'
+  // Or to signal a different branch
+  projectName: function (rootDir) {
+    return rootDir + '/tests'
   }
 };
 ```
 
-And set desktop notifications for displays or notifications that have `desktop: true` or as an object.
+And set desktop notifications for displays or notifications that have a truthy value for `desktop`.
 
 ```js
 // .notifyrc
@@ -482,7 +524,7 @@ notify({
   desktop: true
 });
 
-// if you have something defined in your notification or display settings,
+// or this will override the `Frog` sound with `Glass`.
 notify({
   message: 'My message',
   value: 'value',
@@ -553,6 +595,12 @@ var timerTwo = notify.clock();
 var duration = notify.clock(timerOne); // "1.3s"
 var duration = notify.clock(timerTwo); // "900ms"
 ```
+
+## Contributors
+
+* [Michael Keller](https://twitter.com/mhkeller)
+* [Jeremy Diamond](https://twitter.com/_jsdiamond)
+* [Julian Burgess](https://twitter.com/aubergene)
 
 ## License
 
