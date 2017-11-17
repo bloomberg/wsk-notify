@@ -136,7 +136,7 @@ See the specifics of these styles under `defaultDisplays` in [`src/defaults/defa
 
 ![watch display](screenshots/watch.png)
 
-**`warn`**, , uses console.warn
+**`warn`**, uses console.warn
 
 ![warn display](screenshots/warn.png)
 
