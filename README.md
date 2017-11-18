@@ -1,7 +1,7 @@
 wsk-notify [<img src="https://github.com/bloomberg/wsk-notify/raw/docs/src/img/wsk-notify.gif" width="100" align="right" alt="wsk-notify">](https://bloomberg.github.io/wsk-notify)
 ===
 
-[![Build status](https://img.shields.io/travis/bloomberg/wsk-notify.svg?style=flat-square)](https://travis-ci.org/bloomberg/wsk-notify)
+[![Build status](https://img.shields.io/travis/bloomberg/wsk-notify/master.svg?style=flat-square)](https://travis-ci.org/bloomberg/wsk-notify)
 [![Coverage](https://img.shields.io/coveralls/github/bloomberg/wsk-notify/master.svg?style=flat-square)](https://coveralls.io/github/bloomberg/wsk-notify?branch=master)
 [![npm version](https://img.shields.io/npm/v/wsk-notify.svg?style=flat-square)](https://www.npmjs.com/package/wsk-notify)
 [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-00b9e7.svg?style=flat-square)](https://github.com/Flet/semistandard)
