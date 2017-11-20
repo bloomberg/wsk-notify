@@ -33,6 +33,8 @@ wsk-notify [<img src="https://github.com/bloomberg/wsk-notify/raw/docs/src/img/w
 npm install --save wsk-notify
 ```
 
+**[See wsk-notify's source code on GitHub](https://github.com/bloomberg/wsk-notify)**
+
 ## Usage
 
 Use the `notify` function to create formatted console messages. Simple usage:
