@@ -140,11 +140,11 @@ See the specifics of these styles under `defaultDisplays` in [`src/defaults/defa
 
 ![warn display](screenshots/warn.png)
 
-**`error`**, uses console.error
+**`error`**, shows desktop notification and uses console.error
 
 ![error display](screenshots/error.png)
 
-**`error` with an `Error` object to show stack**, uses console.error
+**`error` with an `Error` object**, shows desktop notification, stack trace and uses console.error
 
 ![error-object display](screenshots/error-object.png)
 
