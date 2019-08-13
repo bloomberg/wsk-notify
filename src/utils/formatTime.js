@@ -12,6 +12,12 @@
  * --------------------------------------------
  */
 
+// Remove trailing zeros
+function truncate (val, to) {
+  var str = val.toFixed(to);
+  return str.replace(/0$/, '');
+}
+
 module.exports = function formatTime (milliseconds) {
   var oneHour = 3600000;
   var oneMinute = 60000;
@@ -55,7 +61,7 @@ module.exports = function formatTime (milliseconds) {
   } else if (hours && seconds && milliseconds) {
     result += Math.round(seconds + milliseconds / 1000) + 's';
   } else if (seconds && milliseconds) {
-    result += seconds + (Math.round((milliseconds / 1000) * 100) / 100) + 's';
+    result += truncate(seconds + (Math.round((milliseconds / 1000) * 100) / 100), 2) + 's';
   } else if (hours && !seconds && milliseconds) {
     result += Math.ceil(milliseconds / 1000) + 's';
   } else if (milliseconds) {
